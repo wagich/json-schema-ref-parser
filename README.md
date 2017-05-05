@@ -1,13 +1,13 @@
 JSON Schema $Ref Parser
 ============================
-#### Parse, Resolve, and Dereference JSON Schema $ref pointers
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/json-schema-ref-parser.svg)](https://travis-ci.org/BigstickCarpet/json-schema-ref-parser)
-[![Dependencies](https://david-dm.org/BigstickCarpet/json-schema-ref-parser.svg)](https://david-dm.org/BigstickCarpet/json-schema-ref-parser)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/json-schema-ref-parser?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/json-schema-ref-parser/branch/master)
+
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/json-schema-ref-parser/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/json-schema-ref-parser)
-[![Code Climate Score](https://codeclimate.com/github/BigstickCarpet/json-schema-ref-parser/badges/gpa.svg)](https://codeclimate.com/github/BigstickCarpet/json-schema-ref-parser)
-[![Codacy Score](https://www.codacy.com/project/badge/d8abfe5e9a4044b89bd9f4b999d4a574)](https://www.codacy.com/public/jamesmessinger/json-schema-ref-parser)
+[![Codacy Score](https://api.codacy.com/project/badge/Grade/d8abfe5e9a4044b89bd9f4b999d4a574)](https://www.codacy.com/public/jamesmessinger/json-schema-ref-parser)
 [![Inline docs](http://inch-ci.org/github/BigstickCarpet/json-schema-ref-parser.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/json-schema-ref-parser)
+[![Dependencies](https://david-dm.org/BigstickCarpet/json-schema-ref-parser.svg)](https://david-dm.org/BigstickCarpet/json-schema-ref-parser)
 
 [![npm](http://img.shields.io/npm/v/json-schema-ref-parser.svg)](https://www.npmjs.com/package/json-schema-ref-parser)
 [![Bower](http://img.shields.io/bower/v/json-schema-ref-parser.svg)](http://bower.io/)
@@ -110,10 +110,10 @@ Install using [bower](http://bower.io/):
 bower install json-schema-ref-parser
 ```
 
-Then reference [`ref-parser.js`](dist/ref-parser.js) or [`ref-parser.min.js`](dist/ref-parser.min.js) in your HTML:
+Then reference [`json-schema-ref-parser.js`](dist/json-schema-ref-parser.js) or [`json-schema-ref-parser.min.js`](dist/json-schema-ref-parser.min.js) in your HTML:
 
 ```html
-<script src="bower_components/json-schema-ref-parser/dist/ref-parser.js"></script>
+<script src="bower_components/json-schema-ref-parser/dist/json-schema-ref-parser.js"></script>
 ```
 
 Or, if you're using AMD (Require.js), then import it into your module:

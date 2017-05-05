@@ -1,36 +1,41 @@
 {
   "name": "json-schema-ref-parser",
-  "description": "Parse, Resolve, and Dereference JSON Schema $ref pointers",
-  "keywords": [],
+  "description": "Resolves JSON Schema $ref pointers, even to external files and URLs",
+  "keywords": [
+    "json",
+    "schema",
+    "jsonschema",
+    "json-schema",
+    "json-pointer",
+    "$ref",
+    "dereference",
+    "resolve"
+  ],
   "authors": [
     {
       "name": "James Messinger",
-      "homepage": "https://github.com/BigstickCarpet"
+      "homepage": "http://jamesmessinger.com"
     }
   ],
+  "license": "MIT",
   "homepage": "https://github.com/BigstickCarpet/json-schema-ref-parser",
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/json-schema-ref-parser.git"
   },
-  "license": "MIT",
-  "main": "dist/ref-parser.js",
+  "main": "dist/json-schema-ref-parser.js",
   "ignore": [
     "/bower_components",
+    "/dist/*.test.js",
     "/docs",
     "/lib",
-    "/www",
-    "/dist/*.test.js",
     "/test",
-    "/karma.conf.js",
     "/.*",
-    "/index.html",
-    "/package.json"
+    "/*.js",
+    "/*.json",
+    "/*.txt",
+    "/*.yml"
   ],
   "dependencies": {},
-  "devDependencies": {
-    "chai": "*",
-    "mocha": "*",
-    "sinon-js": "*"
-  }
+  "devDependencies": {}
 }
