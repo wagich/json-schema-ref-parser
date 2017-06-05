@@ -2,7 +2,7 @@ JSON Schema $Ref Parser
 ============================
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/json-schema-ref-parser.svg?branch=master)](https://travis-ci.org/BigstickCarpet/json-schema-ref-parser)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/json-schema-ref-parser?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/json-schema-ref-parser/branch/master)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/json-schema-ref-parser/branch/master?svg=true&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/json-schema-ref-parser/branch/master)
 
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/json-schema-ref-parser/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/json-schema-ref-parser)
 [![Codacy Score](https://api.codacy.com/project/badge/Grade/d8abfe5e9a4044b89bd9f4b999d4a574)](https://www.codacy.com/public/jamesmessinger/json-schema-ref-parser)
