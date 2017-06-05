@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  global.helper = {};
+  host.global.helper = {};
 
   /**
    * Parsed JSON schemas
@@ -136,7 +136,7 @@
 
     expect(file.extension).to.match(/^\.[a-z]+/);  // lowercase and start with a dot
 
-    if (userAgent.isBrowser) {
+    if (host.browser) {
       expect(file.urlType).not.to.equal('file');
     }
 

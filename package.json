@@ -23,6 +23,7 @@
     "url": "https://github.com/BigstickCarpet/json-schema-ref-parser.git"
   },
   "main": "lib/index.js",
+  "browser": "dist/json-schema-ref-parser.js",
   "files": [
     "dist/json-schema-ref-parser.js",
     "dist/json-schema-ref-parser.js.map",
@@ -53,6 +54,7 @@
     "karma-cli": "^1.0.1",
     "karma-coverage": "^1.1.1",
     "karma-firefox-launcher": "^1.0.0",
+    "karma-host-environment": "^1.0.1",
     "karma-ie-launcher": "^1.0.0",
     "karma-mocha": "^1.2.0",
     "karma-safari-launcher": "^1.0.0",

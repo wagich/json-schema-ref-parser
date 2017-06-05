@@ -102,7 +102,7 @@ describe('Schema with external $refs', function() {
   });
 
   // Skip this test on Node v0.x, due to bugs in `url.resolve()`
-  if (!userAgent.isOldNode) {
+  if (!(host.node && host.node.version < 1)) {
     it('should resolve successfully from a url', function() {
       return $RefParser.resolve(path.url('specs/external/external.yaml'))
         .then(function(schema) {

@@ -5,15 +5,19 @@ describe.skip('Blank files', function() {
 
   beforeEach(function() {
     // Some old Webkit browsers throw an error when downloading zero-byte files.
-    windowOnError = global.onerror;
-    global.onerror = function() {
-      testDone();
-      return true;
-    };
+    if (host.browser) {
+      windowOnError = window.onerror;
+      window.onerror = function() {
+        testDone();
+        return true;
+      };
+    }
   });
 
   afterEach(function() {
-    global.onerror = windowOnError;
+    if (host.browser) {
+      window.onerror = windowOnError;
+    }
   });
 
   describe('main file', function() {

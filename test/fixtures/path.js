@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  var path = global.path = {};
-  var _path = userAgent.isNode ? require('path') : null;
-  var _url = userAgent.isNode ? require('url') : null;
+  var path = host.global.path = {};
+  var _path = host.node ? require('path') : null;
+  var _url = host.node ? require('url') : null;
   var _testsDir = getTestsDir();
 
-  if (userAgent.isNode) {
+  if (host.node) {
     // Run all tests from the "tests" directory
     process.chdir(_path.join(__dirname, '..'));
   }
@@ -17,7 +17,7 @@
    * NOTE: When running in a test-runner (such as Karma) the absolute path is returned instead
    */
   path.rel = function(file) {
-    if (userAgent.isNode) {
+    if (host.node) {
       // Return the relative path from the project root
       return _path.normalize(file);
     }
@@ -39,7 +39,7 @@
    * Returns the absolute path of a file in the "tests" directory
    */
   path.abs = function(file) {
-    if (userAgent.isNode) {
+    if (host.node) {
       file = _path.join(_testsDir, file || '/');
     }
     else {
@@ -56,7 +56,7 @@
    * Returns the path of a file in the "test" directory as a URL.
    */
   path.url = function(file) {
-    if (userAgent.isBrowser) {
+    if (host.browser) {
       // In browsers, just return the absolute URL (e.g. "http://localhost/test/files/...")
       return path.abs(file);
     }
@@ -80,7 +80,7 @@
    * In Node, this is the "test" directory. In the browser, it is the directory of the current page.
    */
   path.cwd = function() {
-    if (userAgent.isNode) {
+    if (host.node) {
       return process.cwd() + '/';
     }
     else {
@@ -92,7 +92,7 @@
    * Returns the path of the "tests" directory
    */
   function getTestsDir() {
-    if (userAgent.isNode) {
+    if (host.node) {
       return _path.resolve(__dirname, '..');
     }
     else {
