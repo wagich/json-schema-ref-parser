@@ -11,27 +11,27 @@ const bundledSchema = require("./bundled");
 describe("Schema with circular (recursive) external $refs", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/circular-external/circular-external.yaml"));
+    const schema = await parser.parse(path.rel("specs/circular-external/circular-external.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/circular-external/circular-external.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/circular-external/circular-external.json")]);
     // The "circular" flag should NOT be set
     // (it only gets set by `dereference`)
     expect(parser.$refs.circular).to.equal(false);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/circular-external/circular-external.yaml"),
-    path.abs("specs/circular-external/circular-external.yaml"), parsedSchema.schema,
-    path.abs("specs/circular-external/definitions/pet.yaml"), parsedSchema.pet,
-    path.abs("specs/circular-external/definitions/child.yaml"), parsedSchema.child,
-    path.abs("specs/circular-external/definitions/parent.yaml"), parsedSchema.parent,
-    path.abs("specs/circular-external/definitions/person.yaml"), parsedSchema.person
+    path.rel("specs/circular-external/circular-external.json"),
+    path.abs("specs/circular-external/circular-external.json"), parsedSchema.schema,
+    path.abs("specs/circular-external/definitions/pet.json"), parsedSchema.pet,
+    path.abs("specs/circular-external/definitions/child.json"), parsedSchema.child,
+    path.abs("specs/circular-external/definitions/parent.json"), parsedSchema.parent,
+    path.abs("specs/circular-external/definitions/person.json"), parsedSchema.person
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/circular-external/circular-external.yaml"));
+    const schema = await parser.dereference(path.rel("specs/circular-external/circular-external.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // The "circular" flag should be set
@@ -46,14 +46,14 @@ describe("Schema with circular (recursive) external $refs", () => {
     let parser = new $RefParser();
 
     try {
-      await parser.dereference(path.rel("specs/circular-external/circular-external.yaml"), { dereference: { circular: false }});
+      await parser.dereference(path.rel("specs/circular-external/circular-external.json"), { dereference: { circular: false }});
       helper.shouldNotGetCalled();
     }
     catch (err) {
       // A ReferenceError should have been thrown
       expect(err).to.be.an.instanceOf(ReferenceError);
       expect(err.message).to.contain("Circular $ref pointer found at ");
-      expect(err.message).to.contain("specs/circular-external/circular-external.yaml#/definitions/thing");
+      expect(err.message).to.contain("specs/circular-external/circular-external.json#/definitions/thing");
 
       // $Refs.circular should be true
       expect(parser.$refs.circular).to.equal(true);
@@ -62,7 +62,7 @@ describe("Schema with circular (recursive) external $refs", () => {
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/circular-external/circular-external.yaml"));
+    const schema = await parser.bundle(path.rel("specs/circular-external/circular-external.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
     // The "circular" flag should NOT be set

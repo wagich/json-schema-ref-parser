@@ -17,12 +17,12 @@ module.exports =
     },
     external1: {
       test: {
-        $ref: "definitions.yaml#/thing"
+        $ref: "definitions.json#/thing"
       }
     },
     external2: {
       test: {
-        $ref: "definitions.yaml#/thing"
+        $ref: "definitions.json#/thing"
       }
     },
   },

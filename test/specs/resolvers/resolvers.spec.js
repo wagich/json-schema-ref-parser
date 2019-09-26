@@ -10,13 +10,13 @@ const dereferencedSchema = require("./dereferenced");
 describe("options.resolve", () => {
   it('should not resolve external links if "resolve.external" is disabled', async () => {
     const schema = await $RefParser
-      .dereference(path.abs("specs/resolvers/resolvers.yaml"), { resolve: { external: false }});
+      .dereference(path.abs("specs/resolvers/resolvers.json"), { resolve: { external: false }});
     expect(schema).to.deep.equal(parsedSchema);
   });
 
   it("should throw an error for unrecognized protocols", async () => {
     try {
-      await $RefParser.dereference(path.abs("specs/resolvers/resolvers.yaml"));
+      await $RefParser.dereference(path.abs("specs/resolvers/resolvers.json"));
       helper.shouldNotGetCalled();
     }
     catch (err) {
@@ -27,7 +27,7 @@ describe("options.resolve", () => {
 
   it("should use a custom resolver with static values", async () => {
     const schema = await $RefParser
-      .dereference(path.abs("specs/resolvers/resolvers.yaml"), {
+      .dereference(path.abs("specs/resolvers/resolvers.json"), {
         resolve: {
           // A custom resolver for "foo://" URLs
           foo: {
@@ -41,7 +41,7 @@ describe("options.resolve", () => {
 
   it("should use a custom resolver that returns a value", async () => {
     const schema = await $RefParser
-      .dereference(path.abs("specs/resolvers/resolvers.yaml"), {
+      .dereference(path.abs("specs/resolvers/resolvers.json"), {
         resolve: {
           // A custom resolver for "foo://" URLs
           foo: {
@@ -57,7 +57,7 @@ describe("options.resolve", () => {
 
   it("should use a custom resolver that calls a callback", async () => {
     const schema = await $RefParser
-      .dereference(path.abs("specs/resolvers/resolvers.yaml"), {
+      .dereference(path.abs("specs/resolvers/resolvers.json"), {
         resolve: {
           // A custom resolver for "foo://" URLs
           foo: {
@@ -74,7 +74,7 @@ describe("options.resolve", () => {
   if (typeof Promise === "function") {
     it("should use a custom resolver that returns a promise", async () => {
       const schema = await $RefParser
-        .dereference(path.abs("specs/resolvers/resolvers.yaml"), {
+        .dereference(path.abs("specs/resolvers/resolvers.json"), {
           resolve: {
             // A custom resolver for "foo://" URLs
             foo: {
@@ -91,7 +91,7 @@ describe("options.resolve", () => {
 
   it("should continue resolving if a custom resolver fails", async () => {
     const schema = await $RefParser
-      .dereference(path.abs("specs/resolvers/resolvers.yaml"), {
+      .dereference(path.abs("specs/resolvers/resolvers.json"), {
         resolve: {
           // A custom resolver that always fails
           badResolver: {

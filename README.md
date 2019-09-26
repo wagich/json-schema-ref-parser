@@ -26,7 +26,7 @@ You've got a JSON Schema with `$ref` pointers to other files and/or URLs.  Maybe
     },
     "place": {
       // references a sub-schema in an external file
-      "$ref": "schemas/places.yaml#/definitions/Gotham-City"
+      "$ref": "schemas/places.json#/definitions/Gotham-City"
     },
     "thing": {
       // references a URL

@@ -11,22 +11,22 @@ const bundledSchema = require("./bundled");
 describe("$refs that are substrings of each other", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/substrings/substrings.yaml"));
+    const schema = await parser.parse(path.rel("specs/substrings/substrings.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/substrings/substrings.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/substrings/substrings.json")]);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/substrings/substrings.yaml"),
-    path.abs("specs/substrings/substrings.yaml"), parsedSchema.schema,
+    path.rel("specs/substrings/substrings.json"),
+    path.abs("specs/substrings/substrings.json"), parsedSchema.schema,
     path.abs("specs/substrings/definitions/definitions.json"), parsedSchema.definitions,
-    path.abs("specs/substrings/definitions/strings.yaml"), parsedSchema.strings
+    path.abs("specs/substrings/definitions/strings.json"), parsedSchema.strings
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/substrings/substrings.yaml"));
+    const schema = await parser.dereference(path.rel("specs/substrings/substrings.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -39,7 +39,7 @@ describe("$refs that are substrings of each other", () => {
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/substrings/substrings.yaml"));
+    const schema = await parser.bundle(path.rel("specs/substrings/substrings.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

@@ -6,7 +6,7 @@ module.exports =
     title: "Deep Schema",
     definitions: {
       name: {
-        $ref: "definitions/name.yaml"
+        $ref: "definitions/name.json"
       }
     },
     type: "object",
@@ -36,7 +36,7 @@ module.exports =
                     type: "object",
                     properties: {
                       name: {
-                        $ref: "definitions/name.yaml"
+                        $ref: "definitions/name.json"
                       },
                       level5: {
                         required: [
@@ -45,7 +45,7 @@ module.exports =
                         type: "object",
                         properties: {
                           name: {
-                            $ref: "definitions/name.yaml"
+                            $ref: "definitions/name.json"
                           },
                           level6: {
                             required: [
@@ -108,7 +108,7 @@ module.exports =
                                                             type: "object",
                                                             properties: {
                                                               name: {
-                                                                $ref: "definitions/name.yaml"
+                                                                $ref: "definitions/name.json"
                                                               },
                                                               level15: {
                                                                 required: [
@@ -123,7 +123,7 @@ module.exports =
                                                                     type: "object",
                                                                     properties: {
                                                                       name: {
-                                                                        $ref: "definitions/name.yaml"
+                                                                        $ref: "definitions/name.json"
                                                                       },
                                                                       level17: {
                                                                         required: [
@@ -168,7 +168,7 @@ module.exports =
                                                                                                 type: "object",
                                                                                                 properties: {
                                                                                                   name: {
-                                                                                                    $ref: "definitions/name.yaml"
+                                                                                                    $ref: "definitions/name.json"
                                                                                                   },
                                                                                                   level24: {
                                                                                                     required: [
@@ -177,7 +177,7 @@ module.exports =
                                                                                                     type: "object",
                                                                                                     properties: {
                                                                                                       name: {
-                                                                                                        $ref: "definitions/name.yaml"
+                                                                                                        $ref: "definitions/name.json"
                                                                                                       },
                                                                                                       level25: {
                                                                                                         required: [
@@ -186,7 +186,7 @@ module.exports =
                                                                                                         type: "object",
                                                                                                         properties: {
                                                                                                           name: {
-                                                                                                            $ref: "definitions/name.yaml"
+                                                                                                            $ref: "definitions/name.json"
                                                                                                           },
                                                                                                           level26: {
                                                                                                             required: [
@@ -216,17 +216,17 @@ module.exports =
                                                                                                                             $ref: "#"
                                                                                                                           },
                                                                                                                           name: {
-                                                                                                                            $ref: "definitions/name.yaml"
+                                                                                                                            $ref: "definitions/name.json"
                                                                                                                           }
                                                                                                                         }
                                                                                                                       },
                                                                                                                       name: {
-                                                                                                                        $ref: "definitions/name.yaml"
+                                                                                                                        $ref: "definitions/name.json"
                                                                                                                       }
                                                                                                                     }
                                                                                                                   },
                                                                                                                   name: {
-                                                                                                                    $ref: "definitions/name.yaml"
+                                                                                                                    $ref: "definitions/name.json"
                                                                                                                   }
                                                                                                                 }
                                                                                                               },
@@ -242,39 +242,39 @@ module.exports =
                                                                                                 }
                                                                                               },
                                                                                               name: {
-                                                                                                $ref: "definitions/name.yaml"
+                                                                                                $ref: "definitions/name.json"
                                                                                               }
                                                                                             }
                                                                                           },
                                                                                           name: {
-                                                                                            $ref: "definitions/name.yaml"
+                                                                                            $ref: "definitions/name.json"
                                                                                           }
                                                                                         }
                                                                                       },
                                                                                       name: {
-                                                                                        $ref: "definitions/name.yaml"
+                                                                                        $ref: "definitions/name.json"
                                                                                       }
                                                                                     }
                                                                                   },
                                                                                   name: {
-                                                                                    $ref: "definitions/name.yaml"
+                                                                                    $ref: "definitions/name.json"
                                                                                   }
                                                                                 }
                                                                               },
                                                                               name: {
-                                                                                $ref: "definitions/name.yaml"
+                                                                                $ref: "definitions/name.json"
                                                                               }
                                                                             }
                                                                           },
                                                                           name: {
-                                                                            $ref: "definitions/name.yaml"
+                                                                            $ref: "definitions/name.json"
                                                                           }
                                                                         }
                                                                       }
                                                                     }
                                                                   },
                                                                   name: {
-                                                                    $ref: "definitions/name.yaml"
+                                                                    $ref: "definitions/name.json"
                                                                   }
                                                                 }
                                                               }
@@ -288,27 +288,27 @@ module.exports =
                                                     }
                                                   },
                                                   name: {
-                                                    $ref: "definitions/name.yaml"
+                                                    $ref: "definitions/name.json"
                                                   }
                                                 }
                                               },
                                               name: {
-                                                $ref: "definitions/name.yaml"
+                                                $ref: "definitions/name.json"
                                               }
                                             }
                                           },
                                           name: {
-                                            $ref: "definitions/name.yaml"
+                                            $ref: "definitions/name.json"
                                           }
                                         }
                                       },
                                       name: {
-                                        $ref: "definitions/name.yaml"
+                                        $ref: "definitions/name.json"
                                       }
                                     }
                                   },
                                   name: {
-                                    $ref: "definitions/name.yaml"
+                                    $ref: "definitions/name.json"
                                   }
                                 }
                               }
@@ -324,12 +324,12 @@ module.exports =
                 }
               },
               name: {
-                $ref: "definitions/name.yaml"
+                $ref: "definitions/name.json"
               }
             }
           },
           name: {
-            $ref: "definitions/name.yaml"
+            $ref: "definitions/name.json"
           }
         }
       },
@@ -359,7 +359,7 @@ module.exports =
         $ref: "#/properties/last"
       },
       last: {
-        $ref: "./required-string.yaml"
+        $ref: "./required-string.json"
       },
       suffix: {
         $ref: "#/properties/prefix",
@@ -367,7 +367,7 @@ module.exports =
         maxLength: 3
       },
       first: {
-        $ref: "../definitions/required-string.yaml"
+        $ref: "../definitions/required-string.json"
       }
     },
     title: "name"

@@ -15,49 +15,49 @@ const bundledSchema = require("./bundled");
 describe("Schema with two external refs to the same value and internal ref before", () => {
   it("should parse successfully from an absolute path", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.abs("specs/external-from-internal/external-from-internal.yaml"));
+    const schema = await parser.parse(path.abs("specs/external-from-internal/external-from-internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-from-internal/external-from-internal.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-from-internal/external-from-internal.json")]);
   });
 
   it("should parse successfully from a relative path", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/external-from-internal/external-from-internal.yaml"));
+    const schema = await parser.parse(path.rel("specs/external-from-internal/external-from-internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-from-internal/external-from-internal.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-from-internal/external-from-internal.json")]);
   });
 
   it("should parse successfully from a url", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.url("specs/external-from-internal/external-from-internal.yaml"));
+    const schema = await parser.parse(path.url("specs/external-from-internal/external-from-internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.url("specs/external-from-internal/external-from-internal.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.url("specs/external-from-internal/external-from-internal.json")]);
   });
 
   it("should resolve successfully from an absolute path", helper.testResolve(
-    path.abs("specs/external-from-internal/external-from-internal.yaml"),
-    path.abs("specs/external-from-internal/external-from-internal.yaml"), parsedSchema.schema,
-    path.abs("specs/external-from-internal/definitions.yaml"), parsedSchema.definitions
+    path.abs("specs/external-from-internal/external-from-internal.json"),
+    path.abs("specs/external-from-internal/external-from-internal.json"), parsedSchema.schema,
+    path.abs("specs/external-from-internal/definitions.json"), parsedSchema.definitions
   ));
 
   it("should resolve successfully from a relative path", helper.testResolve(
-    path.rel("specs/external-from-internal/external-from-internal.yaml"),
-    path.abs("specs/external-from-internal/external-from-internal.yaml"), parsedSchema.schema,
-    path.abs("specs/external-from-internal/definitions.yaml"), parsedSchema.definitions
+    path.rel("specs/external-from-internal/external-from-internal.json"),
+    path.abs("specs/external-from-internal/external-from-internal.json"), parsedSchema.schema,
+    path.abs("specs/external-from-internal/definitions.json"), parsedSchema.definitions
   ));
 
   it("should resolve successfully from a url", helper.testResolve(
-    path.url("specs/external-from-internal/external-from-internal.yaml"),
-    path.url("specs/external-from-internal/external-from-internal.yaml"), parsedSchema.schema,
-    path.url("specs/external-from-internal/definitions.yaml"), parsedSchema.definitions
+    path.url("specs/external-from-internal/external-from-internal.json"),
+    path.url("specs/external-from-internal/external-from-internal.json"), parsedSchema.schema,
+    path.url("specs/external-from-internal/definitions.json"), parsedSchema.definitions
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/external-from-internal/external-from-internal.yaml"));
+    const schema = await parser.dereference(path.rel("specs/external-from-internal/external-from-internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -77,7 +77,7 @@ describe("Schema with two external refs to the same value and internal ref befor
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/external-from-internal/external-from-internal.yaml"));
+    const schema = await parser.bundle(path.rel("specs/external-from-internal/external-from-internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

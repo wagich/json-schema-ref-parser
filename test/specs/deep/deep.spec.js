@@ -11,22 +11,22 @@ const bundledSchema = require("./bundled");
 describe("Schema with deeply-nested $refs", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/deep/deep.yaml"));
+    const schema = await parser.parse(path.rel("specs/deep/deep.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/deep/deep.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/deep/deep.json")]);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/deep/deep.yaml"),
-    path.abs("specs/deep/deep.yaml"), parsedSchema.schema,
-    path.abs("specs/deep/definitions/name.yaml"), parsedSchema.name,
-    path.abs("specs/deep/definitions/required-string.yaml"), parsedSchema.requiredString
+    path.rel("specs/deep/deep.json"),
+    path.abs("specs/deep/deep.json"), parsedSchema.schema,
+    path.abs("specs/deep/definitions/name.json"), parsedSchema.name,
+    path.abs("specs/deep/definitions/required-string.json"), parsedSchema.requiredString
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/deep/deep.yaml"));
+    const schema = await parser.dereference(path.rel("specs/deep/deep.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -41,7 +41,7 @@ describe("Schema with deeply-nested $refs", () => {
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/deep/deep.yaml"));
+    const schema = await parser.bundle(path.rel("specs/deep/deep.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

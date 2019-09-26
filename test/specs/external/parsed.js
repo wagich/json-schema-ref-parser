@@ -31,13 +31,13 @@ module.exports =
 
   definitions: {
     "required string": {
-      $ref: "required-string.yaml"
+      $ref: "required-string.json"
     },
     string: {
       $ref: "#/required%20string/type"
     },
     name: {
-      $ref: "../definitions/name.yaml"
+      $ref: "../definitions/name.json"
     }
   },
 
@@ -61,7 +61,7 @@ module.exports =
         $ref: "#/properties/last"
       },
       last: {
-        $ref: "./required-string.yaml"
+        $ref: "./required-string.json"
       },
       suffix: {
         $ref: "#/properties/prefix",

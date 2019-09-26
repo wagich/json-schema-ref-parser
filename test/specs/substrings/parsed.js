@@ -26,13 +26,13 @@ module.exports =
 
   definitions: {
     name: {
-      $ref: "strings.yaml#/definitions/string"
+      $ref: "strings.json#/definitions/string"
     },
     "name-with-min-length": {
-      $ref: "../definitions/strings.yaml#/definitions/string-with-min-length"
+      $ref: "../definitions/strings.json#/definitions/string-with-min-length"
     },
     "name-with-min-length-max-length": {
-      $ref: "./strings.yaml#/definitions/string-with-min-length-max-length"
+      $ref: "./strings.json#/definitions/string-with-min-length-max-length"
     }
   },
 

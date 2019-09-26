@@ -11,21 +11,21 @@ const bundledSchema = require("./bundled");
 describe("Schema with multiple external $refs to different parts of a file", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.abs("specs/external-multiple/external-multiple.yaml"));
+    const schema = await parser.parse(path.abs("specs/external-multiple/external-multiple.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-multiple/external-multiple.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-multiple/external-multiple.json")]);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/external-multiple/external-multiple.yaml"),
-    path.abs("specs/external-multiple/external-multiple.yaml"), parsedSchema.schema,
-    path.abs("specs/external-multiple/definitions.yaml"), parsedSchema.definitions
+    path.rel("specs/external-multiple/external-multiple.json"),
+    path.abs("specs/external-multiple/external-multiple.json"), parsedSchema.schema,
+    path.abs("specs/external-multiple/definitions.json"), parsedSchema.definitions
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/external-multiple/external-multiple.yaml"));
+    const schema = await parser.dereference(path.rel("specs/external-multiple/external-multiple.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -36,7 +36,7 @@ describe("Schema with multiple external $refs to different parts of a file", () 
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/external-multiple/external-multiple.yaml"));
+    const schema = await parser.bundle(path.rel("specs/external-multiple/external-multiple.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

@@ -18,7 +18,7 @@ describe("Callback & Promise syntax", () => {
   function testCallbackSuccess (method) {
     return function (done) {
       let parser = new $RefParser();
-      parser[method](path.rel("specs/internal/internal.yaml"), (err, result) => {
+      parser[method](path.rel("specs/internal/internal.json"), (err, result) => {
         try {
           expect(err).to.be.null;
           expect(result).to.be.an("object").and.ok;
@@ -40,7 +40,7 @@ describe("Callback & Promise syntax", () => {
 
   function testCallbackError (method) {
     return function (done) {
-      $RefParser[method](path.rel("specs/invalid/invalid.yaml"), (err, result) => {
+      $RefParser[method](path.rel("specs/invalid/invalid.json"), (err, result) => {
         try {
           expect(err).to.be.an.instanceOf(SyntaxError);
           expect(result).to.be.undefined;
@@ -56,7 +56,7 @@ describe("Callback & Promise syntax", () => {
   function testPromiseSuccess (method) {
     return function () {
       let parser = new $RefParser();
-      return parser[method](path.rel("specs/internal/internal.yaml"))
+      return parser[method](path.rel("specs/internal/internal.json"))
         .then((result) => {
           expect(result).to.be.an("object").and.ok;
 
@@ -72,7 +72,7 @@ describe("Callback & Promise syntax", () => {
 
   function testPromiseError (method) {
     return function () {
-      return $RefParser[method](path.rel("specs/invalid/invalid.yaml"))
+      return $RefParser[method](path.rel("specs/invalid/invalid.json"))
         .then(helper.shouldNotGetCalled)
         .catch((err) => {
           expect(err).to.be.an.instanceOf(SyntaxError);

@@ -24,13 +24,13 @@ describe("Invalid syntax", () => {
 
     it("should throw an error for an invalid YAML file", async () => {
       try {
-        await $RefParser.dereference(path.rel("specs/invalid/invalid.yaml"));
+        await $RefParser.dereference(path.rel("specs/invalid/invalid.json"));
         helper.shouldNotGetCalled();
       }
       catch (err) {
         expect(err).to.be.an.instanceOf(SyntaxError);
         expect(err.message).to.contain("Error parsing ");
-        expect(err.message).to.contain("invalid/invalid.yaml");
+        expect(err.message).to.contain("invalid/invalid.json");
       }
     });
 
@@ -60,12 +60,12 @@ describe("Invalid syntax", () => {
 
     it("should throw an error for an invalid YAML file with JSON and YAML disabled", async () => {
       try {
-        await $RefParser.dereference(path.rel("specs/invalid/invalid.yaml"), { parse: { yaml: false, json: false }});
+        await $RefParser.dereference(path.rel("specs/invalid/invalid.json"), { parse: { yaml: false, json: false }});
         helper.shouldNotGetCalled();
       }
       catch (err) {
         expect(err).to.be.an.instanceOf(SyntaxError);
-        expect(err.message).to.contain('invalid/invalid.yaml" is not a valid JSON Schema');
+        expect(err.message).to.contain('invalid/invalid.json" is not a valid JSON Schema');
       }
     });
   });
@@ -73,13 +73,13 @@ describe("Invalid syntax", () => {
   describe("in referenced files", () => {
     it("should throw an error for an invalid YAML file", async () => {
       try {
-        await $RefParser.dereference({ foo: { $ref: path.rel("specs/invalid/invalid.yaml") }});
+        await $RefParser.dereference({ foo: { $ref: path.rel("specs/invalid/invalid.json") }});
         helper.shouldNotGetCalled();
       }
       catch (err) {
         expect(err).to.be.an.instanceOf(SyntaxError);
         expect(err.message).to.contain("Error parsing ");
-        expect(err.message).to.contain("invalid/invalid.yaml");
+        expect(err.message).to.contain("invalid/invalid.json");
       }
     });
 
@@ -111,13 +111,13 @@ describe("Invalid syntax", () => {
 
     it("should NOT throw an error for an invalid YAML file with JSON and YAML disabled", async () => {
       const schema = await $RefParser
-        .dereference({ foo: { $ref: path.rel("specs/invalid/invalid.yaml") }}, {
+        .dereference({ foo: { $ref: path.rel("specs/invalid/invalid.json") }}, {
           parse: { yaml: false, json: false }
         });
 
       // Because the JSON and YAML parsers were disabled, the invalid YAML file got parsed as plain text
       expect(schema).to.deep.equal({
-        foo: ":\n"
+        foo: "{\n"
       });
     });
   });

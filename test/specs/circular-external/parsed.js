@@ -5,19 +5,19 @@ module.exports =
   schema: {
     definitions: {
       pet: {
-        $ref: "definitions/pet.yaml"
+        $ref: "definitions/pet.json"
       },
       thing: {
-        $ref: "circular-external.yaml#/definitions/thing"
+        $ref: "circular-external.json#/definitions/thing"
       },
       person: {
-        $ref: "definitions/person.yaml"
+        $ref: "definitions/person.json"
       },
       parent: {
-        $ref: "definitions/parent.yaml"
+        $ref: "definitions/parent.json"
       },
       child: {
-        $ref: "definitions/child.yaml"
+        $ref: "definitions/child.json"
       }
     }
   },
@@ -49,7 +49,7 @@ module.exports =
     properties: {
       parents: {
         items: {
-          $ref: "parent.yaml"
+          $ref: "parent.json"
         },
         type: "array"
       },
@@ -68,7 +68,7 @@ module.exports =
       },
       children: {
         items: {
-          $ref: "child.yaml"
+          $ref: "child.json"
         },
         type: "array"
       }
@@ -80,7 +80,7 @@ module.exports =
     type: "object",
     properties: {
       spouse: {
-        $ref: "person.yaml"
+        $ref: "person.json"
       },
       name: {
         type: "string"

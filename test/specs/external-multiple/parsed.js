@@ -9,13 +9,13 @@ module.exports = {
         type: "string"
       },
       user: {
-        $ref: "definitions.yaml#/User"
+        $ref: "definitions.json#/User"
       }
     },
     example: {
       token: "11111111",
       user: {
-        $ref: "definitions.yaml#/User/example"
+        $ref: "definitions.json#/User/example"
       }
     }
   },

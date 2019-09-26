@@ -7,12 +7,12 @@ module.exports =
   },
 
   root: {
-    $ref: "../definitions/extended.yaml"
+    $ref: "../definitions/extended.json"
   },
 
   extended: {
     title: "Extending a root $ref",
-    $ref: "name.yaml"
+    $ref: "name.json"
   },
 
   name: {
@@ -24,7 +24,7 @@ module.exports =
     type: "object",
     properties: {
       last: {
-        $ref: "./name.yaml#/properties/first"
+        $ref: "./name.json#/properties/first"
       },
       first: {
         type: "string"

@@ -11,20 +11,20 @@ const bundledSchema = require("./bundled");
 describe("Schema with internal $refs", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/internal/internal.yaml"));
+    const schema = await parser.parse(path.rel("specs/internal/internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/internal/internal.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/internal/internal.json")]);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/internal/internal.yaml"),
-    path.abs("specs/internal/internal.yaml"), parsedSchema
+    path.rel("specs/internal/internal.json"),
+    path.abs("specs/internal/internal.json"), parsedSchema
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/internal/internal.yaml"));
+    const schema = await parser.dereference(path.rel("specs/internal/internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -40,7 +40,7 @@ describe("Schema with internal $refs", () => {
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/internal/internal.yaml"));
+    const schema = await parser.bundle(path.rel("specs/internal/internal.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

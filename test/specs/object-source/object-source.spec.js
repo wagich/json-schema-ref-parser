@@ -40,8 +40,8 @@ describe("Object sources (instead of file paths)", () => {
     let expectedPaths = [
       path.cwd(),
       path.abs("specs/object-source/definitions/definitions.json"),
-      path.abs("specs/object-source/definitions/name.yaml"),
-      path.abs("specs/object-source/definitions/required-string.yaml")
+      path.abs("specs/object-source/definitions/name.json"),
+      path.abs("specs/object-source/definitions/required-string.json")
     ];
     expect(parser.$refs.paths()).to.have.same.members(expectedPaths);
     expect(parser.$refs.values()).to.have.keys(expectedPaths);
@@ -65,8 +65,8 @@ describe("Object sources (instead of file paths)", () => {
     let expectedPaths = [
       path.cwd(),
       path.abs("specs/object-source/definitions/definitions.json"),
-      path.abs("specs/object-source/definitions/name.yaml"),
-      path.abs("specs/object-source/definitions/required-string.yaml")
+      path.abs("specs/object-source/definitions/name.json"),
+      path.abs("specs/object-source/definitions/required-string.json")
     ];
     expect(parser.$refs.paths()).to.have.same.members(expectedPaths);
     expect(parser.$refs.values()).to.have.keys(expectedPaths);

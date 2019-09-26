@@ -1,0 +1,16 @@
+{
+	"title": "name",
+	"type": "object",
+	"required": [
+	  "first",
+	  "last"
+	],
+	"properties": {
+	  "first": {
+		"type": "string"
+	  },
+	  "last": {
+		"$ref": "./name.json#/properties/first"
+	  }
+	}
+  }

@@ -7,7 +7,7 @@ module.exports =
       $ref: "foo://bar.baz"
     },
     pet: {
-      $ref: "definitions/pet.yaml"
+      $ref: "definitions/pet.json"
     },
     name: {
       required: [

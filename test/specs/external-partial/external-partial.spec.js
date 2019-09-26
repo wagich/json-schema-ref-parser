@@ -11,23 +11,23 @@ const bundledSchema = require("./bundled");
 describe("Schema with $refs to parts of external files", () => {
   it("should parse successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.parse(path.rel("specs/external-partial/external-partial.yaml"));
+    const schema = await parser.parse(path.rel("specs/external-partial/external-partial.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(parsedSchema.schema);
-    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-partial/external-partial.yaml")]);
+    expect(parser.$refs.paths()).to.deep.equal([path.abs("specs/external-partial/external-partial.json")]);
   });
 
   it("should resolve successfully", helper.testResolve(
-    path.rel("specs/external-partial/external-partial.yaml"),
-    path.abs("specs/external-partial/external-partial.yaml"), parsedSchema.schema,
+    path.rel("specs/external-partial/external-partial.json"),
+    path.abs("specs/external-partial/external-partial.json"), parsedSchema.schema,
     path.abs("specs/external-partial/definitions/definitions.json"), parsedSchema.definitions,
-    path.abs("specs/external-partial/definitions/name.yaml"), parsedSchema.name,
-    path.abs("specs/external-partial/definitions/required-string.yaml"), parsedSchema.requiredString
+    path.abs("specs/external-partial/definitions/name.json"), parsedSchema.name,
+    path.abs("specs/external-partial/definitions/required-string.json"), parsedSchema.requiredString
   ));
 
   it("should dereference successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.dereference(path.rel("specs/external-partial/external-partial.yaml"));
+    const schema = await parser.dereference(path.rel("specs/external-partial/external-partial.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(dereferencedSchema);
     // Reference equality
@@ -39,7 +39,7 @@ describe("Schema with $refs to parts of external files", () => {
 
   it("should bundle successfully", async () => {
     let parser = new $RefParser();
-    const schema = await parser.bundle(path.rel("specs/external-partial/external-partial.yaml"));
+    const schema = await parser.bundle(path.rel("specs/external-partial/external-partial.json"));
     expect(schema).to.equal(parser.schema);
     expect(schema).to.deep.equal(bundledSchema);
   });

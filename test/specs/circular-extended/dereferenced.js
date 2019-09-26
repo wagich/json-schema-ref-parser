@@ -63,7 +63,7 @@ const dereferencedSchema = module.exports =
     ignoreCircular$Refs: {
       definitions: {
         person: {
-          $ref: "definitions/person-with-spouse.yaml"
+          $ref: "definitions/person-with-spouse.json"
         },
         pet: null
       }
@@ -118,10 +118,10 @@ const dereferencedSchema = module.exports =
     ignoreCircular$Refs: {
       definitions: {
         parent: {
-          $ref: "definitions/parent-with-children.yaml"
+          $ref: "definitions/parent-with-children.json"
         },
         child: {
-          $ref: "definitions/child-with-parents.yaml"
+          $ref: "definitions/child-with-parents.json"
         },
         pet: null
       }
@@ -175,10 +175,10 @@ const dereferencedSchema = module.exports =
       definitions: {
         pet: null,
         parent: {
-          $ref: "definitions/parent-with-child.yaml"
+          $ref: "definitions/parent-with-child.json"
         },
         child: {
-          $ref: "definitions/child-with-children.yaml"
+          $ref: "definitions/child-with-children.json"
         }
       }
     }
