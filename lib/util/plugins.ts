@@ -48,7 +48,7 @@ export function sort(plugins: Plugin[]) {
 // @ts-ignore
 export interface PluginResult<S extends object = JSONSchema, O extends ParserOptions<S> = ParserOptions<S>> {
   plugin: Plugin;
-  result?: string | Buffer | S;
+  result?: string | S;
   error?: any;
 }
 

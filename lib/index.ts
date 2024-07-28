@@ -107,7 +107,7 @@ export class $RefParser<S extends object = JSONSchema, O extends ParserOptions<S
     try {
       const result = await promise;
 
-      if (result !== null && typeof result === "object" && !Buffer.isBuffer(result)) {
+      if (result !== null && typeof result === "object") {
         this.schema = result;
         return maybe(args.callback, Promise.resolve(this.schema!));
       } else if (args.options.continueOnError) {

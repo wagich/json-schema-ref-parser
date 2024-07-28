@@ -31,9 +31,6 @@ export default {
    */
   async parse(file: FileInfo): Promise<object | undefined> {
     let data = file.data;
-    if (Buffer.isBuffer(data)) {
-      data = data.toString();
-    }
 
     if (typeof data === "string") {
       if (data.trim().length === 0) {

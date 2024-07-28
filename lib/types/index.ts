@@ -73,7 +73,7 @@ export interface ResolverOptions<S extends object = JSONSchema> {
     | ((
         file: FileInfo,
         callback?: (error: Error | null, data: string | null) => any,
-      ) => string | Buffer | S | Promise<string | Buffer | S>);
+      ) => string | S | Promise<string | S>);
 }
 
 export interface Plugin {
@@ -98,11 +98,7 @@ export interface Plugin {
    * @type {boolean} @default true
    */
   allowBOM?: boolean;
-
-  /**
-   * The encoding that the text is expected to be in.
-   */
-  encoding?: BufferEncoding;
+  
   /**
    * Determines which parsers will be used for which files.
    *
@@ -147,5 +143,5 @@ export interface FileInfo {
   /**
    * The raw file contents, in whatever form they were returned by the resolver that read the file.
    */
-  data: string | Buffer;
+  data: string;
 }
