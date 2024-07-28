@@ -1,7 +1,5 @@
 import $Refs from "./refs.js";
-import _parse from "./parse.js";
 import normalizeArgs from "./normalize-args.js";
-import resolveExternal from "./resolve-external.js";
 import _bundle from "./bundle.js";
 import _dereference from "./dereference.js";
 import * as url from "./util/url.js";
@@ -83,18 +81,9 @@ export class $RefParser<S extends object = JSONSchema, O extends ParserOptions<S
     // Reset everything
     this.schema = null;
     this.$refs = new $Refs();
-
-    // If the path is a filesystem path, then convert it to a URL.
-    // NOTE: According to the JSON Reference spec, these should already be URLs,
-    // but, in practice, many people use local filesystem paths instead.
-    // So we're being generous here and doing the conversion automatically.
-    // This is not intended to be a 100% bulletproof solution.
-    // If it doesn't work for your use-case, then use a URL instead.
+    
     let pathType = "http";
-    if (url.isFileSystemPath(args.path)) {
-      args.path = url.fromFileSystemPath(args.path);
-      pathType = "file";
-    } else if (!args.path && args.schema && "$id" in args.schema && args.schema.$id) {
+    if (!args.path && args.schema && "$id" in args.schema && args.schema.$id) {
       // when schema id has defined an URL should use that hostname to request the references,
       // instead of using the current page URL
       const params = url.parse(args.schema.$id as string);
@@ -104,7 +93,7 @@ export class $RefParser<S extends object = JSONSchema, O extends ParserOptions<S
     }
 
     // Resolve the absolute path of the schema
-    args.path = url.resolve(url.cwd(), args.path);
+    args.path = url.resolve(window.location.href, args.path);
 
     if (args.schema && typeof args.schema === "object") {
       // A schema object was passed-in.
@@ -113,9 +102,6 @@ export class $RefParser<S extends object = JSONSchema, O extends ParserOptions<S
       $ref.value = args.schema;
       $ref.pathType = pathType;
       promise = Promise.resolve(args.schema);
-    } else {
-      // Parse the schema file/url
-      promise = _parse<S, typeof args.options>(args.path, this.$refs, args.options);
     }
 
     try {
@@ -204,7 +190,6 @@ export class $RefParser<S extends object = JSONSchema, O extends ParserOptions<S
 
     try {
       await this.parse(args.path, args.schema, args.options);
-      await resolveExternal(this, args.options);
       finalize(this);
       return maybe(args.callback, Promise.resolve(this.$refs));
     } catch (err) {

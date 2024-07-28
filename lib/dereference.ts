@@ -185,9 +185,7 @@ function dereference$Ref<S extends object = JSONSchema, O extends ParserOptions<
   options: O,
   startTime: number,
 ) {
-  const isExternalRef = $Ref.isExternal$Ref($ref);
-  const shouldResolveOnCwd = isExternalRef && options?.dereference?.externalReferenceResolution === "root";
-  const $refPath = url.resolve(shouldResolveOnCwd ? url.cwd() : path, $ref.$ref);
+  const $refPath = url.resolve(path, $ref.$ref);
 
   const cache = dereferencedCache.get($refPath);
   if (cache) {

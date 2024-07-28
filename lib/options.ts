@@ -1,9 +1,4 @@
 import jsonParser from "./parsers/json.js";
-import yamlParser from "./parsers/yaml.js";
-import textParser from "./parsers/text.js";
-import binaryParser from "./parsers/binary.js";
-import fileResolver from "./resolvers/file.js";
-import httpResolver from "./resolvers/http.js";
 
 import type { HTTPResolverOptions, JSONSchema, JSONSchemaObject, Plugin, ResolverOptions } from "./types/index.js";
 
@@ -119,9 +114,6 @@ export const getJsonSchemaRefParserDefaultOptions = () => {
      */
     parse: {
       json: { ...jsonParser },
-      yaml: { ...yamlParser },
-      text: { ...textParser },
-      binary: { ...binaryParser },
     },
 
     /**
@@ -131,9 +123,6 @@ export const getJsonSchemaRefParserDefaultOptions = () => {
      * your own implementation, or disable any resolver by setting it to false.
      */
     resolve: {
-      file: { ...fileResolver },
-      http: { ...httpResolver },
-
       /**
        * Determines whether external $ref pointers will be resolved.
        * If this option is disabled, then none of above resolvers will be called.
@@ -141,7 +130,7 @@ export const getJsonSchemaRefParserDefaultOptions = () => {
        *
        * @type {boolean}
        */
-      external: true,
+      external: false,
     },
 
     /**

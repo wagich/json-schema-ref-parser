@@ -3,7 +3,6 @@ import $Ref from "./ref.js";
 import * as url from "./util/url.js";
 import type { JSONSchema4Type, JSONSchema6Type, JSONSchema7Type } from "json-schema";
 import type { ParserOptions } from "./options.js";
-import convertPathToPosix from "./util/convert-path-to-posix";
 import type { JSONSchema } from "./types";
 
 interface $RefsMap<S extends object = JSONSchema, O extends ParserOptions<S> = ParserOptions<S>> {
@@ -34,7 +33,7 @@ export default class $Refs<S extends object = JSONSchema, O extends ParserOption
   paths(...types: (string | string[])[]): string[] {
     const paths = getPaths(this._$refs, types.flat());
     return paths.map((path) => {
-      return convertPathToPosix(path.decoded);
+      return path.decoded;
     });
   }
 
@@ -49,7 +48,7 @@ export default class $Refs<S extends object = JSONSchema, O extends ParserOption
     const $refs = this._$refs;
     const paths = getPaths($refs, types.flat());
     return paths.reduce<Record<string, any>>((obj, path) => {
-      obj[convertPathToPosix(path.decoded)] = $refs[path.encoded].value;
+      obj[path.decoded] = $refs[path.encoded].value;
       return obj;
     }, {}) as S;
   }
@@ -233,7 +232,7 @@ function getPaths<S extends object = JSONSchema, O extends ParserOptions<S> = Pa
   return paths.map((path) => {
     return {
       encoded: path,
-      decoded: $refs[path].pathType === "file" ? url.toFileSystemPath(path, true) : path,
+      decoded: path,
     };
   });
 }

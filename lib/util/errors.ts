@@ -1,5 +1,5 @@
 import { Ono } from "@jsdevtools/ono";
-import { stripHash, toFileSystemPath } from "./url.js";
+import { stripHash } from "./url.js";
 import type $RefParser from "../index.js";
 import type { ParserOptions } from "../index.js";
 import type { JSONSchema } from "../index.js";
@@ -51,7 +51,7 @@ export class JSONParserErrorGroup<
     this.name = "JSONParserErrorGroup";
     this.message = `${this.errors.length} error${
       this.errors.length > 1 ? "s" : ""
-    } occurred while reading '${toFileSystemPath(parser.$refs._root$Ref!.path)}'`;
+    } occurred while reading '${parser.$refs._root$Ref!.path}'`;
 
     Ono.extend(this);
   }
